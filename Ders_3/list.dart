@@ -50,10 +50,32 @@ void main() {
   print(customerMoney);
 
   // customers 100 30 40 60 var. 35 tlden büyük olanlara kredi verebiliriz. küçüklere bye.
+  List<int> moneyNewCustomers = [100, 30, 40, 60, -5];
+  moneyNewCustomers.sort();
 
-  List<int> moneyNewCustomers = [100, 30, 40, 60];
+  for (int index = 0; index < moneyNewCustomers.length; index += 1) {
+    print('müşteri parası: ${moneyNewCustomers[index]}');
+    if (moneyNewCustomers[index] > 35) {
+      print("kredi hazır");      
+    } else if (moneyNewCustomers[index] > 0){
+      print("kredi veremeyiz ama bi bakalım");
+    } else {
+      print("bye");
+    }
+  }
+  
+  print("///////////////////");
 
-  for(int i = 0; i < moneyNewCustomers.length ; i = i + 1){
-    print("müşteri parası: ${moneyNewCustomers[i]}");
+  // TERSİNE YAPILMASI GEREKİRSE EĞER
+
+  for (int index = moneyNewCustomers.length-1; index >= 0; index += -1) {
+      print('müşteri parası: ${moneyNewCustomers[index]}');
+    if (moneyNewCustomers[index] > 35) {
+      print("kredi hazır");      
+    } else if (moneyNewCustomers[index] > 0){
+      print("kredi veremeyiz ama bi bakalım");
+    } else {
+      print("bye");
+     }
   }
-  }
+}
