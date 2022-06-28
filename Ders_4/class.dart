@@ -1,38 +1,31 @@
+import 'model/user_model.dart';
+import 'model/user_model_2.dart';
+
 void main() {
-  // müşterinın adı var, parası var, yaşı var vs vs.
+  // musteri adi var, parasi var, yasi var bla bla
 
-  late int customerMoney = 50;
-  late String customerName = "Veli";
-  late int customerAge = 13;
-  late String customerCity = "Ardahan";
+  final int customerMoney = 50;
+  final String customerName = "veli";
+  final int customerAge = 13;
+  final String customerCity = 'Ardahan';
 
-  // Bu müşterimin yaşı 10'dan büyükse işlem yap
+  // bu mestirimin yasi 10 buyukse bir islem yapalim
 
-  if (customerAge > 10) {
-    print("Alışveriş başarılı");
-  } else {
-    print("alışveriş yapamazsın");
-  }
+  controlCustomerAge(customerMoney);
 
-  // yeni müşteri geldi yine aynı bilgilerler
+  // yeni musteri geliyor yine ayni alnanlar
 
-  late int customerMoney2 = 50;
-  late String customerName2 = "Veli";
-  late int customerAge2 = 13;
-  late String customerCity2 = "asd";
+  final int customerMoney2 = 50;
+  final String customerName2 = "veli";
+  final int customerAge2 = 13;
+  final String customerCity2 = 'asd';
 
-    if (customerAge2 > 10) {
-    print("Alışveriş başarılı");
-  } else {
-    print("alışveriş yapamazsın");
-  }
+  controlCustomerAge(customerMoney2);
 
-  controlCustomerAge(customerAge2);
+  // unutmusuz musterlerin sehirleri
 
-  // Müşterilerin şehirlerini unutmuşuz. ekleyelim.
-  // ---------
-  // Müşterileri gruplasak ve aynı özellikleri aynı şekilde bana gösterse.
-
+  // ---
+  // ya ben musterileri gruplasam, yani bir kuemelesem ve bunlar ayni ozellikleri ayni sekilde bana gosteriblse
 
   int? newMoney;
   if (newMoney != null) {
@@ -41,114 +34,90 @@ void main() {
     print(10 + 10);
   }
 
-  // bizim paraları veren bir servisimiz var. eğer cevap gelmezse ana değer olarak 10 ata.
-  
-  // bankaya müşteri gelir. birinin 100 tlsi var birinin hesabı yok diğerinin 0 tlsi var
-  // hesabı olmayana yeni hesap açalım
+  // musteri diyorki ya bak bizim bir servisimz var paralari veren eger bir cavap gelmezse sen ana deger olarak 10 ata
+  // print(newMoney! + 10);
+  // print(newMoney + 10);
 
-  // yeni bir method olsun bu methodda hesabı ve parası olmayanları yok sayalım
+  // bankaya 3 tane musteri gelir birinin 100tlsi var digerinin hesabi hic yok digerinin 0 tlsi var
+  // hesabi olmayana ghelin hesap acalim, 0 tlsi olani kov, 100tlsi olana musterim hosgeldin
 
-  // para verdiklerimizi ekranda true yazalım
+  // yeni bir method olsun bu methodda hesabi olmaynanlari ve parasi olamyanlari yok sayalim
+  // para verdiklerimizi ekranda true yazalim
 
   List<int?> customerMoneys = [100, null, 0];
 
   for (var item in customerMoneys) {
     if (item != null) {
       if (item > 0) {
-        print("beyefendi");
+        print('beyfendi');
       } else {
-        print("bye");
+        print('byy');
       }
     } else {
-      print("hadi gel hesap açalım");
+      print('haydi hesap acalim');
     }
 
-    //----------
+    // ----
     bool result = controlMoney(item) == null ? false : true;
     print(result);
+  }
 
-    print("-----------------------------" * 10);
+  print('----------------' * 10);
 
   int customerMoneyX = 15;
-  User user1 = User("Hako", 15, age: 21, city: "Antalya");
-  // User user2 = User("Hako2", 15, null, null);
+  User user1 = User('vb', 15, age: 21, city: 'aaa', id: '123');
+  // User user2 = User('vb2', 15, null, null);
 
-  final user3 = User("aa", 159, age: 13);
+  final user3 = User('aa', 159, age: 13, id: '12');
 
-   print(user3.userCode);
+  print(user3.userCode);
 
   print(user1.name);
 
-  // müşteri son gelen kişinin şehrine göre kampanya yapacak eğer istanbulsa
+  // musteri son gelen kisinin citysiniina gore kapmanya yapacak eger istanbul ise
 
-  
-  
-  
-  
   if (user3.city == null) {
-    print("müşteri şehir bilgisini girmemiş");
-  } else 
+    print('musteri sehir bilgisini vermemis');
+  } else {
     if (user3.city!.isEmpty) {
-      print("okok");
+      print('okok');
     }
-  { 
-    if (user3.city == "istanbul") {
-      print("kazandınız");
+
+    if (user3.city == 'istanbul') {
+      print('tebirkler kazadniniz');
     }
   }
+
+  // musteri idsi 12 olana indirim yap
+
+  if (user3.isSpecialUser('12')) {
+    user3.money += 5;
+    print('para eklendi');
   }
+
+  //
+
+  User2 newUser2 = User2('vb', 15);
+  newUser2.money += 5;
+  newUser2.money = null;
+
+  print(newUser2.toString());
 }
 
 int? controlMoney(int? money) {
   if (money != null && money > 0) {
     return money;
   }
-  if (money == null || money == 0) {
-    return null;
-  }
+
+  // if (money == null || money == 0) {
+  //   return null;
+  // }
 }
 
 void controlCustomerAge(int value) {
   if (value > 10) {
-    print("Alışveriş başarılı");
+    print('alisveris yapabilirsiniz');
   } else {
-    print("alışveriş yapamazsın");
+    print('alisvers yapamaiyz');
   }
-}
-
-// Adı olmak zorunda
-// Parası olmak zorunda
-// Yaşı ve şehri vermeyebilir
-// şehir yoksa istanbul say
-
-class User {
-  late String name;
-  late int money;
-  late int? age;
-  late String? city;
-
-  late final String userCode;
- 
-  User(String name, int money, {int? age, String? city}) {
-    this.name = name;
-    this.money = money;
-    this.age = age;
-    this.city = city;
-    userCode = (city ?? "istanbul") + name;
-  }
-}
-
-//
-
-class User2 {
-  late String name;
-  late int money;
-  late int? age;
-  late String? city;
-
-  late final String userCode;
-
-  User2(this.name, this.money, this.age, this.city) {
-  userCode = (city ?? "istanbul") + name;
-}
 }
